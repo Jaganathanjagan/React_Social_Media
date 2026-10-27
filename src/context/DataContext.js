@@ -13,7 +13,7 @@ export const DataProvider = ({ children }) => {
     data,
     fetchError,
     isLoading
-  } = useAxiosFetch('http://localhost:3500/posts');
+  } = useAxiosFetch('/api/posts');
 
   useEffect(() => {
     if (Array.isArray(data)) {
