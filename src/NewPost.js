@@ -12,9 +12,8 @@ const NewPost = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const id = posts.length ? posts[posts.length - 1].id + 1 : 1;
         const datetime = format(new Date(), 'MMMM dd, yyyy pp');
-        const newPost = { id, title: postTitle, datetime, body: postBody };
+        const newPost = { title: postTitle, datetime, body: postBody };
         try {
             const response = await api.post('/posts', newPost);
             const allPosts = [...posts, response.data];
