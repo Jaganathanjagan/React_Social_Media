@@ -22,7 +22,18 @@ const NewPost = () => {
             setPostBody('');
             history.push('/');
         } catch (err) {
-            console.log(`Error: ${err.message}`);
+            console.error('Failed to create post:', err);
+
+            if (err.response) {
+                alert(
+                    `Server error: ${err.response.status}\n` +
+                    JSON.stringify(err.response.data)
+                );
+            } else if (err.request) {
+                alert('No response from the server. Please check the API.');
+            } else {
+                alert(`Error: ${err.message}`);
+            }
         }
     }
 
